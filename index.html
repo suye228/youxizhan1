@@ -1,169 +1,571 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0H91M4H95V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0H91M4H95V');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monster Survivors - Fight Endless Waves of Monsters</title>
-    <meta name="description" content="Survive endless waves of monsters in this action-packed roguelike game. Upgrade your character, collect powerful items, and face increasingly difficult challenges.">
-    <link rel="canonical" href="https://monstersurvivors.com">
+    <title>TiHow Gaming - 免费在线游戏平台 | 动作游戏 | 街机游戏</title>
+    <meta name="description" content="TiHow Gaming提供最好玩的免费在线游戏，包括动作生存游戏、经典街机游戏。立即开始游戏，无需下载！">
+    <meta name="keywords" content="在线游戏, 免费游戏, 动作游戏, 街机游戏, HTML5游戏, 浏览器游戏">
+    <link rel="canonical" href="https://tihow.online">
+    <meta property="og:title" content="TiHow Gaming - 免费在线游戏平台">
+    <meta property="og:description" content="享受最好玩的免费在线游戏，包括动作生存和经典街机游戏">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tihow.online">
+    <meta property="og:site_name" content="TiHow Gaming">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        apple: {
-                            blue: '#007AFF',
-                            red: '#FF3B30',
-                            green: '#34C759',
-                            purple: '#AF52DE',
-                            yellow: '#FFCC00',
-                            orange: '#FF9500',
-                            dark: '#1C1C1E',
-                            gray: '#8E8E93',
-                            lightgray: '#F2F2F7'
-                        }
+                        primary: '#2563eb',
+                        secondary: '#7c3aed',
+                        accent: '#f59e0b',
+                        success: '#10b981',
+                        danger: '#ef4444',
+                        dark: '#1f2937',
+                        light: '#f8fafc'
                     }
                 }
             }
         }
     </script>
-    <style type="text/css">
-        @media (max-width: 640px) {
-            .game-container {
-                height: 70vh;
+    <style>
+        .game-container {
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .canvas-game {
+            border: 2px solid #4f46e5;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        .game-info {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        @media (max-width: 768px) {
+            .mobile-game {
+                height: 400px;
             }
         }
     </style>
 </head>
-<body class="bg-apple-lightgray text-apple-dark">
-    <header class="bg-apple-blue text-white p-4 md:p-6 shadow-md">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="text-center md:text-left mb-4 md:mb-0">
-                    <h1 class="text-3xl md:text-4xl font-bold">Monster Survivors</h1>
-                    <p class="text-lg mt-2">Survive and fight against endless waves of monsters!</p>
+<body class="bg-light text-dark">
+    <!-- Navigation -->
+    <nav class="bg-primary text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">T</span>
+                    </div>
+                    <h1 class="text-2xl font-bold">TiHow Gaming</h1>
                 </div>
-                <nav>
-                    <ul class="flex space-x-4">
-                        <li><a href="#game" class="hover:text-apple-yellow transition-colors">Play Now</a></li>
-                        <li><a href="#about" class="hover:text-apple-yellow transition-colors">About</a></li>
-                        <li><a href="#features" class="hover:text-apple-yellow transition-colors">Features</a></li>
-                        <li><a href="#controls" class="hover:text-apple-yellow transition-colors">Controls</a></li>
-                    </ul>
-                </nav>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="hover:text-accent transition-colors">首页</a>
+                    <a href="#action-games" class="hover:text-accent transition-colors">动作游戏</a>
+                    <a href="#arcade-games" class="hover:text-accent transition-colors">街机游戏</a>
+                    <a href="#about" class="hover:text-accent transition-colors">关于我们</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="#home" class="block py-2 hover:text-accent">首页</a>
+                <a href="#action-games" class="block py-2 hover:text-accent">动作游戏</a>
+                <a href="#arcade-games" class="block py-2 hover:text-accent">街机游戏</a>
+                <a href="#about" class="block py-2 hover:text-accent">关于我们</a>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <main class="container mx-auto p-4 md:p-6">
-        <section id="game" class="my-8">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-apple-blue">Play Monster Survivors</h2>
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="game-container w-full h-screen max-h-[600px]">
-                    <iframe src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html" 
-                            class="w-full h-full border-0" 
-                            allowfullscreen></iframe>
-                </div>
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-br from-primary to-secondary text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-5xl md:text-6xl font-bold mb-6">欢迎来到TiHow Gaming</h2>
+            <p class="text-xl md:text-2xl mb-8">探索最精彩的免费在线游戏世界</p>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">从激烈的动作生存游戏到经典街机游戏，我们为您提供最佳的游戏体验。无需下载，立即开始游戏！</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#action-games" class="bg-accent hover:bg-yellow-500 text-dark px-8 py-3 rounded-lg font-semibold transition-colors">
+                    开始游戏
+                </a>
+                <a href="#about" class="border-2 border-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-semibold transition-colors">
+                    了解更多
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="about" class="my-12">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-apple-blue">About Monster Survivors</h2>
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <p class="mb-4">Monster Survivors is an action-packed roguelike survival game where you must fight against endless waves of monsters. Each run is unique, with random enemy spawns, power-ups, and challenges to overcome.</p>
-                <p>Inspired by games like Vampire Survivors, this game combines fast-paced action with strategic character building. How long can you survive as the difficulty continuously increases?</p>
-            </div>
-        </section>
-
-        <section id="features" class="my-12">
-            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-apple-blue">Game Features</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-apple-orange mb-3">Multiple Characters</h3>
-                    <p>Choose from various characters, each with unique starting weapons and abilities.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-apple-green mb-3">Weapon Evolution</h3>
-                    <p>Combine weapons and passive items to create powerful evolved weapons with special effects.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-apple-purple mb-3">Level Up System</h3>
-                    <p>Gain experience by defeating enemies and level up to choose new weapons or upgrades.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-apple-red mb-3">Boss Battles</h3>
-                    <p>Face off against massive boss monsters that appear at specific time intervals.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-apple-yellow mb-3">Treasure Chests</h3>
-                    <p>Find and open treasure chests to receive random items, gold, or special power-ups.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-apple-blue mb-3">Daily Challenges</h3>
-                    <p>Complete daily challenges to earn rewards and climb the global leaderboard.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="controls" class="my-12">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-apple-blue">Game Controls</h2>
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <h3 class="text-xl font-semibold text-apple-purple mb-3">Keyboard Controls</h3>
-                        <ul class="list-disc pl-5 space-y-2">
-                            <li><span class="font-semibold">WASD or Arrow Keys:</span> Move your character</li>
-                            <li><span class="font-semibold">Space:</span> Pause the game</li>
-                            <li><span class="font-semibold">E or Enter:</span> Select/Confirm</li>
-                            <li><span class="font-semibold">Esc:</span> Back/Menu</li>
-                        </ul>
+    <!-- Action Games Section -->
+    <section id="action-games" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-primary">动作游戏</h2>
+            
+            <!-- Monster Survivors Game -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-12">
+                <div class="md:flex">
+                    <div class="md:w-1/3 p-8">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">怪物幸存者</h3>
+                        <div class="flex items-center mb-4">
+                            <span class="bg-danger text-white px-3 py-1 rounded-full text-sm mr-2">动作</span>
+                            <span class="bg-secondary text-white px-3 py-1 rounded-full text-sm">生存</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">在这款激动人心的roguelike生存游戏中，对抗无尽的怪物波浪。每次游戏都是独特的体验，随机的敌人生成、升级道具和挑战等待着你。</p>
+                        <div class="space-y-2 text-sm text-gray-500">
+                            <div>✦ 多种角色选择</div>
+                            <div>✦ 武器进化系统</div>
+                            <div>✦ Boss战斗</div>
+                            <div>✦ 升级系统</div>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-semibold text-apple-orange mb-3">Mobile Controls</h3>
-                        <ul class="list-disc pl-5 space-y-2">
-                            <li><span class="font-semibold">Virtual Joystick:</span> Appears on the left side of the screen for movement</li>
-                            <li><span class="font-semibold">Tap Buttons:</span> Menu and action buttons on the right side</li>
-                            <li><span class="font-semibold">Swipe:</span> Navigate menus and selection screens</li>
-                        </ul>
+                    <div class="md:w-2/3">
+                        <div class="game-container p-6">
+                            <div class="bg-gray-800 rounded-lg p-4 text-center text-white">
+                                <h4 class="text-lg mb-4">怪物幸存者</h4>
+                                <p class="mb-4">游戏暂时不可用，正在寻找新的游戏源</p>
+                                <div class="bg-gray-700 rounded p-4">
+                                    <p class="text-sm">我们正在努力恢复这款精彩的游戏</p>
+                                    <p class="text-sm mt-2">请稍后再试或体验我们的其他游戏</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer class="bg-apple-dark text-white p-6">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <p>&copy; 2025 Monster Survivors. All rights reserved.</p>
+    <!-- Arcade Games Section -->
+    <section id="arcade-games" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-primary">街机游戏</h2>
+            
+            <!-- Space Shooter Game -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/3 p-8">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">太空射手</h3>
+                        <div class="flex items-center mb-4">
+                            <span class="bg-success text-white px-3 py-1 rounded-full text-sm mr-2">街机</span>
+                            <span class="bg-accent text-white px-3 py-1 rounded-full text-sm">射击</span>
+                        </div>
+                        <p class="text-gray-600 mb-6">经典的太空射击游戏！控制你的飞船，躲避敌人攻击，射击敌舰获得分数。考验你的反应速度和策略思维。</p>
+                        <div class="space-y-2 text-sm text-gray-500 mb-6">
+                            <div>✦ WASD 或方向键移动</div>
+                            <div>✦ 空格键射击</div>
+                            <div>✦ 躲避红色敌人</div>
+                            <div>✦ 挑战最高分数</div>
+                        </div>
+                        <div class="game-info rounded-lg p-4">
+                            <div class="text-sm">
+                                <div class="flex justify-between mb-2">
+                                    <span>分数:</span>
+                                    <span id="score" class="font-bold">0</span>
+                                </div>
+                                <div class="flex justify-between mb-2">
+                                    <span>生命:</span>
+                                    <span id="lives" class="font-bold">3</span>
+                                </div>
+                                <button id="startGame" class="w-full bg-primary text-white py-2 rounded mt-4 hover:bg-blue-700 transition-colors">
+                                    开始游戏
+                                </button>
+                                <button id="pauseGame" class="w-full bg-gray-500 text-white py-2 rounded mt-2 hover:bg-gray-600 transition-colors" disabled>
+                                    暂停游戏
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                        <div class="game-container p-4 rounded-lg">
+                            <canvas id="gameCanvas" class="canvas-game mx-auto mobile-game" width="600" height="400"></canvas>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex space-x-4">
-                    <a href="#" class="hover:text-apple-blue transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-apple-blue transition-colors">Terms of Service</a>
-                    <a href="#" class="hover:text-apple-blue transition-colors">Contact</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-primary">关于TiHow Gaming</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold mb-4 text-secondary">我们的使命</h3>
+                        <p class="text-gray-600">TiHow Gaming致力于为玩家提供最优质的免费在线游戏体验。我们精心挑选和开发各类游戏，确保每款游戏都能为您带来快乐和娱乐。</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold mb-4 text-secondary">游戏特色</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• 100% 免费游戏</li>
+                            <li>• 无需下载安装</li>
+                            <li>• 支持所有现代浏览器</li>
+                            <li>• 移动设备兼容</li>
+                            <li>• 定期更新新游戏</li>
+                        </ul>
+                    </div>
                 </div>
+                <div class="text-center mt-12">
+                    <h3 class="text-2xl font-bold mb-4 text-primary">游戏分类</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-white rounded-lg p-4 shadow">
+                            <div class="text-danger text-2xl mb-2">⚔️</div>
+                            <h4 class="font-semibold">动作游戏</h4>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 shadow">
+                            <div class="text-success text-2xl mb-2">🕹️</div>
+                            <h4 class="font-semibold">街机游戏</h4>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 shadow">
+                            <div class="text-accent text-2xl mb-2">🧩</div>
+                            <h4 class="font-semibold">益智游戏</h4>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 shadow">
+                            <div class="text-secondary text-2xl mb-2">🏎️</div>
+                            <h4 class="font-semibold">竞速游戏</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">TiHow Gaming</h3>
+                    <p class="text-gray-300">您的在线游戏娱乐首选平台，提供最优质的免费游戏体验。</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">游戏分类</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#action-games" class="hover:text-accent">动作游戏</a></li>
+                        <li><a href="#arcade-games" class="hover:text-accent">街机游戏</a></li>
+                        <li><a href="#" class="hover:text-accent">益智游戏</a></li>
+                        <li><a href="#" class="hover:text-accent">竞速游戏</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">联系我们</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-accent">隐私政策</a></li>
+                        <li><a href="#" class="hover:text-accent">服务条款</a></li>
+                        <li><a href="#" class="hover:text-accent">联系方式</a></li>
+                        <li><a href="#" class="hover:text-accent">反馈建议</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2025 TiHow Gaming. 保留所有权利。</p>
             </div>
         </div>
     </footer>
 
-    <!-- JSON-LD structured data for SEO -->
+    <!-- Game Script -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Space Shooter Game
+        class SpaceShooter {
+            constructor() {
+                this.canvas = document.getElementById('gameCanvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.gameRunning = false;
+                this.score = 0;
+                this.lives = 3;
+                this.keys = {};
+                
+                this.player = {
+                    x: this.canvas.width / 2 - 15,
+                    y: this.canvas.height - 60,
+                    width: 30,
+                    height: 30,
+                    speed: 5
+                };
+                
+                this.bullets = [];
+                this.enemies = [];
+                this.lastEnemyTime = 0;
+                this.lastShotTime = 0;
+                
+                this.setupEventListeners();
+                this.resizeCanvas();
+            }
+            
+            resizeCanvas() {
+                if (window.innerWidth <= 768) {
+                    this.canvas.width = 400;
+                    this.canvas.height = 300;
+                } else {
+                    this.canvas.width = 600;
+                    this.canvas.height = 400;
+                }
+            }
+            
+            setupEventListeners() {
+                window.addEventListener('keydown', (e) => {
+                    this.keys[e.key] = true;
+                });
+                
+                window.addEventListener('keyup', (e) => {
+                    this.keys[e.key] = false;
+                });
+                
+                window.addEventListener('resize', () => {
+                    this.resizeCanvas();
+                });
+            }
+            
+            start() {
+                this.gameRunning = true;
+                this.score = 0;
+                this.lives = 3;
+                this.bullets = [];
+                this.enemies = [];
+                this.player.x = this.canvas.width / 2 - 15;
+                this.player.y = this.canvas.height - 60;
+                this.updateUI();
+                this.gameLoop();
+            }
+            
+            pause() {
+                this.gameRunning = !this.gameRunning;
+                if (this.gameRunning) {
+                    this.gameLoop();
+                }
+            }
+            
+            gameLoop() {
+                if (!this.gameRunning) return;
+                
+                this.update();
+                this.draw();
+                requestAnimationFrame(() => this.gameLoop());
+            }
+            
+            update() {
+                // Player movement
+                if ((this.keys['a'] || this.keys['A'] || this.keys['ArrowLeft']) && this.player.x > 0) {
+                    this.player.x -= this.player.speed;
+                }
+                if ((this.keys['d'] || this.keys['D'] || this.keys['ArrowRight']) && this.player.x < this.canvas.width - this.player.width) {
+                    this.player.x += this.player.speed;
+                }
+                if ((this.keys['w'] || this.keys['W'] || this.keys['ArrowUp']) && this.player.y > 0) {
+                    this.player.y -= this.player.speed;
+                }
+                if ((this.keys['s'] || this.keys['S'] || this.keys['ArrowDown']) && this.player.y < this.canvas.height - this.player.height) {
+                    this.player.y += this.player.speed;
+                }
+                
+                // Shooting
+                if (this.keys[' '] && Date.now() - this.lastShotTime > 200) {
+                    this.bullets.push({
+                        x: this.player.x + this.player.width / 2 - 2,
+                        y: this.player.y,
+                        width: 4,
+                        height: 10,
+                        speed: 7
+                    });
+                    this.lastShotTime = Date.now();
+                }
+                
+                // Update bullets
+                this.bullets = this.bullets.filter(bullet => {
+                    bullet.y -= bullet.speed;
+                    return bullet.y > 0;
+                });
+                
+                // Spawn enemies
+                if (Date.now() - this.lastEnemyTime > 1000) {
+                    this.enemies.push({
+                        x: Math.random() * (this.canvas.width - 30),
+                        y: 0,
+                        width: 30,
+                        height: 30,
+                        speed: 2 + Math.random() * 2
+                    });
+                    this.lastEnemyTime = Date.now();
+                }
+                
+                // Update enemies
+                this.enemies = this.enemies.filter(enemy => {
+                    enemy.y += enemy.speed;
+                    return enemy.y < this.canvas.height;
+                });
+                
+                // Collision detection
+                this.checkCollisions();
+                
+                // Check game over
+                if (this.lives <= 0) {
+                    this.gameRunning = false;
+                    alert(`游戏结束！最终分数: ${this.score}`);
+                }
+            }
+            
+            checkCollisions() {
+                // Bullet-enemy collisions
+                for (let i = this.bullets.length - 1; i >= 0; i--) {
+                    for (let j = this.enemies.length - 1; j >= 0; j--) {
+                        if (this.isColliding(this.bullets[i], this.enemies[j])) {
+                            this.bullets.splice(i, 1);
+                            this.enemies.splice(j, 1);
+                            this.score += 10;
+                            this.updateUI();
+                            break;
+                        }
+                    }
+                }
+                
+                // Player-enemy collisions
+                for (let i = this.enemies.length - 1; i >= 0; i--) {
+                    if (this.isColliding(this.player, this.enemies[i])) {
+                        this.enemies.splice(i, 1);
+                        this.lives--;
+                        this.updateUI();
+                    }
+                }
+            }
+            
+            isColliding(rect1, rect2) {
+                return rect1.x < rect2.x + rect2.width &&
+                       rect1.x + rect1.width > rect2.x &&
+                       rect1.y < rect2.y + rect2.height &&
+                       rect1.y + rect1.height > rect2.y;
+            }
+            
+            draw() {
+                // Clear canvas
+                this.ctx.fillStyle = '#1a1a2e';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                // Draw stars
+                this.ctx.fillStyle = 'white';
+                for (let i = 0; i < 50; i++) {
+                    const x = Math.random() * this.canvas.width;
+                    const y = Math.random() * this.canvas.height;
+                    this.ctx.fillRect(x, y, 1, 1);
+                }
+                
+                // Draw player
+                this.ctx.fillStyle = '#00ff00';
+                this.ctx.fillRect(this.player.x, this.player.y, this.player.width, this.player.height);
+                
+                // Draw bullets
+                this.ctx.fillStyle = '#ffff00';
+                this.bullets.forEach(bullet => {
+                    this.ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+                });
+                
+                // Draw enemies
+                this.ctx.fillStyle = '#ff0000';
+                this.enemies.forEach(enemy => {
+                    this.ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+                });
+            }
+            
+            updateUI() {
+                document.getElementById('score').textContent = this.score;
+                document.getElementById('lives').textContent = this.lives;
+            }
+        }
+        
+        // Initialize game
+        const game = new SpaceShooter();
+        
+        document.getElementById('startGame').addEventListener('click', () => {
+            game.start();
+            document.getElementById('startGame').disabled = true;
+            document.getElementById('pauseGame').disabled = false;
+        });
+        
+        document.getElementById('pauseGame').addEventListener('click', () => {
+            game.pause();
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "VideoGame",
-        "name": "Monster Survivors",
-        "description": "Survive endless waves of monsters in this action-packed roguelike game. Upgrade your character, collect powerful items, and face increasingly difficult challenges.",
-        "genre": ["Action", "Roguelike", "Survival"],
-        "playMode": "SinglePlayer",
-        "applicationCategory": "Game",
-        "url": "https://monstersurvivors.com",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
+        "@type": "WebSite",
+        "name": "TiHow Gaming",
+        "description": "免费在线游戏平台，提供动作游戏、街机游戏等多种类型的HTML5游戏",
+        "url": "https://tihow.online",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://tihow.online/?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "TiHow Gaming"
         }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "TiHow Gaming 游戏列表",
+        "itemListElement": [
+            {
+                "@type": "VideoGame",
+                "position": 1,
+                "name": "怪物幸存者",
+                "description": "激动人心的roguelike生存游戏，对抗无尽的怪物波浪",
+                "genre": ["Action", "Survival", "Roguelike"],
+                "playMode": "SinglePlayer",
+                "applicationCategory": "Game"
+            },
+            {
+                "@type": "VideoGame",
+                "position": 2,
+                "name": "太空射手",
+                "description": "经典太空射击游戏，控制飞船击败敌人",
+                "genre": ["Arcade", "Shooter"],
+                "playMode": "SinglePlayer",
+                "applicationCategory": "Game"
+            }
+        ]
     }
     </script>
 </body>

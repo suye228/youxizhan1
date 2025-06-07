@@ -330,6 +330,7 @@
 
         .game-content {
             display: flex;
+            /* MODIFIED: Always use column direction for a stacked layout */
             flex-direction: column;
         }
 
@@ -401,7 +402,8 @@
 
         .game-iframe {
             width: 100%;
-            height: 24rem;
+            /* MODIFIED: Increased height for a better experience */
+            height: 500px;
             border: none;
             border-radius: 0.5rem;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
@@ -412,7 +414,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 24rem;
+            /* MODIFIED: Increased height to match iframe */
+            height: 500px;
             background-color: #f1f5f9;
             border-radius: 0.5rem;
             color: #6b7280;
@@ -574,19 +577,9 @@
             .hero-buttons {
                 flex-direction: row;
             }
-
-            .game-content {
-                flex-direction: row;
-            }
-
-            .game-info {
-                flex: 1;
-                max-width: 33.333333%;
-            }
-
-            .game-container {
-                flex: 2;
-            }
+            
+            /* MODIFIED: The following rules for game-content, game-info, and game-container have been REMOVED */
+            /* to enforce a single-column layout on all screen sizes, prioritizing the game view. */
 
             .about-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -603,7 +596,8 @@
 
         @media (max-width: 768px) {
             .game-iframe, .game-loading {
-                height: 20rem;
+                /* MODIFIED: Increased mobile height as well */
+                height: 450px;
             }
 
             .hero-title {
@@ -735,6 +729,14 @@
                 
                 <article class="game-card" itemscope itemtype="https://schema.org/VideoGame">
                     <div class="game-content">
+                        <div class="game-container">
+                            <iframe src="https://2048game.com/" 
+                                    class="game-iframe" 
+                                    allowfullscreen
+                                    loading="lazy"
+                                    title="2048在线游戏"
+                                    aria-label="2048在线游戏界面"></iframe>
+                        </div>
                         <div class="game-info">
                             <h3 class="game-title" itemprop="name">2048</h3>
                             <div class="game-tags">
@@ -753,14 +755,6 @@
                                 <li>当棋盘被占满且无法再移动时，游戏结束。</li>
                             </ul>
                         </div>
-                        <div class="game-container">
-                            <iframe src="https://2048game.com/" 
-                                    class="game-iframe" 
-                                    allowfullscreen
-                                    loading="lazy"
-                                    title="2048在线游戏"
-                                    aria-label="2048在线游戏界面"></iframe>
-                        </div>
                     </div>
                 </article>
             </div>
@@ -772,6 +766,14 @@
                 
                 <article class="game-card" itemscope itemtype="https://schema.org/VideoGame">
                     <div class="game-content">
+                        <div class="game-container">
+                            <iframe src="https://ellisonleao.github.io/clumsy-bird/" 
+                                    class="game-iframe" 
+                                    allowfullscreen
+                                    loading="lazy"
+                                    title="Clumsy Bird (笨拙的小鸟) 在线游戏"
+                                    aria-label="Clumsy Bird (笨拙的小鸟) 在线游戏界面"></iframe>
+                        </div>
                         <div class="game-info">
                             <h3 class="game-title" itemprop="name">Clumsy Bird (笨拙的小鸟)</h3>
                             <div class="game-tags">
@@ -794,14 +796,6 @@
                             <meta itemprop="genre" content="Skill">
                             <meta itemprop="playMode" content="SinglePlayer">
                             <meta itemprop="applicationCategory" content="Game">
-                        </div>
-                        <div class="game-container">
-                            <iframe src="https://ellisonleao.github.io/clumsy-bird/" 
-                                    class="game-iframe" 
-                                    allowfullscreen
-                                    loading="lazy"
-                                    title="Clumsy Bird (笨拙的小鸟) 在线游戏"
-                                    aria-label="Clumsy Bird (笨拙的小鸟) 在线游戏界面"></iframe>
                         </div>
                     </div>
                 </article>

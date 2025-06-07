@@ -11,15 +11,15 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TiHow Gaming - 免费在线游戏平台 | 谷歌小恐龙 | 2048 | HTML5游戏</title>
-    <meta name="description" content="TiHow Gaming提供最好玩的免费在线游戏，包括经典的谷歌小恐龙、2048、Flappy Bird和俄罗斯方块。无需下载，支持手机和电脑，立即开始游戏！">
-    <meta name="keywords" content="在线游戏,免费游戏,谷歌小恐龙,2048,Flappy Bird,俄罗斯方块,HTML5游戏,浏览器游戏,手机游戏,益智游戏,休闲游戏,搜索游戏">
+    <title>TiHow Gaming - 免费在线HTML5游戏 | 2048 | Clumsy Bird</title>
+    <meta name="description" content="TiHow Gaming提供最好玩的免费在线HTML5游戏，包括经典的2048和有趣的Clumsy Bird。无需下载，支持手机和电脑，立即开始挑战！">
+    <meta name="keywords" content="在线游戏,免费游戏,2048,Clumsy Bird,HTML5游戏,浏览器游戏,手机游戏,益智游戏,休闲游戏,街机游戏">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://tihow.online/">
     
     <meta property="og:type" content="website">
-    <meta property="og:title" content="TiHow Gaming - 免费在线游戏平台">
-    <meta property="og:description" content="享受最好玩的免费在线游戏，包括谷歌小恐龙、2048等经典游戏。无需下载，立即开始游戏！">
+    <meta property="og:title" content="TiHow Gaming - 免费在线HTML5游戏平台">
+    <meta property="og:description" content="享受最好玩的免费在线游戏，包括经典的2048和有趣的Clumsy Bird。无需下载，立即开始游戏！">
     <meta property="og:url" content="https://tihow.online/">
     <meta property="og:site_name" content="TiHow Gaming">
     <meta property="og:image" content="https://tihow.online/images/og-image.jpg">
@@ -28,8 +28,8 @@
     <meta property="og:locale" content="zh_CN">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TiHow Gaming - 免费在线游戏平台">
-    <meta name="twitter:description" content="享受最好玩的免费在线游戏，包括谷歌小恐龙、2048等经典游戏">
+    <meta name="twitter:title" content="TiHow Gaming - 免费在线HTML5游戏平台">
+    <meta name="twitter:description" content="享受最好玩的免费在线游戏，包括经典的2048和有趣的Clumsy Bird。无需下载，立即开始游戏！">
     <meta name="twitter:image" content="https://tihow.online/images/og-image.jpg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,6 +41,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     
     <style>
+        /* [ 您提供的所有CSS样式保持不变，此处省略以节省空间 ] */
         * {
             margin: 0;
             padding: 0;
@@ -670,10 +671,8 @@
                 </div>
                 <div class="nav-menu">
                     <a href="#home" aria-label="返回首页">首页</a>
-                    <a href="#action-games" aria-label="浏览动作游戏">动作游戏</a>
-                    <a href="#arcade-games" aria-label="浏览街机游戏">街机游戏</a>
                     <a href="#puzzle-games" aria-label="浏览益智游戏">益智游戏</a>
-                    <a href="#casual-games" aria-label="浏览休闲游戏">休闲游戏</a>
+                    <a href="#arcade-games" aria-label="浏览街机游戏">街机游戏</a>
                     <a href="#about" aria-label="了解关于我们">关于我们</a>
                 </div>
                 <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="打开移动菜单" aria-expanded="false">
@@ -684,10 +683,8 @@
             </div>
             <div id="mobile-menu" class="mobile-menu hidden">
                 <a href="#home">首页</a>
-                <a href="#action-games">动作游戏</a>
-                <a href="#arcade-games">街机游戏</a>
                 <a href="#puzzle-games">益智游戏</a>
-                <a href="#casual-games">休闲游戏</a>
+                <a href="#arcade-games">街机游戏</a>
                 <a href="#about">关于我们</a>
             </div>
         </div>
@@ -715,99 +712,20 @@
         <section id="home" class="hero">
             <div class="container">
                 <h2 class="hero-title">欢迎来到TiHow Gaming</h2>
-                <p class="hero-subtitle">探索最精彩的免费在线游戏世界</p>
+                <p class="hero-subtitle">探索最精彩的免费在线HTML5游戏世界</p>
                 
                 <div class="hero-search">
                     <form id="search-form" role="search" aria-label="游戏搜索">
-                        <input type="search" id="search-input" placeholder="搜索游戏，例如：2048、小恐龙..." aria-label="搜索框">
+                        <input type="search" id="search-input" placeholder="搜索游戏，例如：2048、Clumsy Bird..." aria-label="搜索框">
                         <button type="submit" aria-label="搜索按钮">搜索</button>
                     </form>
                 </div>
                 <div id="no-results" class="hidden">未找到相关游戏。</div>
                 
                 <div class="hero-buttons">
-                    <a href="#action-games" class="btn btn-primary" aria-label="立即开始游戏">浏览游戏</a>
+                    <a href="#puzzle-games" class="btn btn-primary" aria-label="立即开始游戏">浏览游戏</a>
                     <a href="#about" class="btn btn-outline" aria-label="了解更多关于我们">了解更多</a>
                 </div>
-            </div>
-        </section>
-
-        <section id="action-games" class="section bg-gray-50">
-            <div class="container">
-                <h2 class="section-title">动作游戏</h2>
-                
-                <article class="game-card" itemscope itemtype="https://schema.org/VideoGame">
-                    <div class="game-content">
-                        <div class="game-info">
-                            <h3 class="game-title" itemprop="name">谷歌小恐龙</h3>
-                            <div class="game-tags">
-                                <span class="tag tag-danger">动作</span>
-                                <span class="tag tag-secondary">无尽跑酷</span>
-                                <span class="tag tag-accent">经典</span>
-                            </div>
-                            <p class="game-description" itemprop="description">体验谷歌浏览器中断网时出现的经典小恐龙游戏！按空格键开始，跳过仙人掌，躲避翼龙。看看你能坚持多久，挑战你的最高分吧！</p>
-                            <ul class="game-features">
-                                <li>全球闻名的经典玩法</li>
-                                <li>按“空格”或“上箭头”跳跃</li>
-                                <li>按“下箭头”下蹲躲避</li>
-                                <li>极简设计，专注乐趣</li>
-                                <li>考验你的反应和时机把握</li>
-                            </ul>
-                            <meta itemprop="genre" content="Action">
-                            <meta itemprop="genre" content="Endless Runner">
-                            <meta itemprop="genre" content="Arcade">
-                            <meta itemprop="playMode" content="SinglePlayer">
-                            <meta itemprop="applicationCategory" content="Game">
-                        </div>
-                        <div class="game-container">
-                            <iframe src="https://t-rex-runner.com/" 
-                                    class="game-iframe" 
-                                    allowfullscreen
-                                    loading="lazy"
-                                    title="谷歌小恐龙在线游戏"
-                                    aria-label="谷歌小恐龙在线游戏界面"></iframe>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section id="arcade-games" class="section">
-            <div class="container">
-                <h2 class="section-title">街机游戏</h2>
-                
-                <article class="game-card" itemscope itemtype="https://schema.org/VideoGame">
-                    <div class="game-content">
-                        <div class="game-info">
-                            <h3 class="game-title" itemprop="name">俄罗斯方块</h3>
-                            <div class="game-tags">
-                                <span class="tag tag-success">街机</span>
-                                <span class="tag tag-accent">益智</span>
-                                <span class="tag tag-secondary">经典</span>
-                            </div>
-                            <p class="game-description" itemprop="description">经典的俄罗斯方块游戏！旋转和移动下落的方块，填满水平线来消除它们。考验你的空间思维能力和反应速度，看看你能达到多少分！</p>
-                            <ul class="game-features">
-                                <li>← → 方向键移动方块</li>
-                                <li>↑ 方向键旋转方块</li>
-                                <li>↓ 方向键加速下落</li>
-                                <li>“空格键”瞬间下落</li>
-                                <li>游戏速度逐渐增加挑战</li>
-                            </ul>
-                            <meta itemprop="genre" content="Arcade">
-                            <meta itemprop="genre" content="Puzzle">
-                            <meta itemprop="playMode" content="SinglePlayer">
-                            <meta itemprop="applicationCategory" content="Game">
-                        </div>
-                        <div class="game-container">
-                            <iframe src="https://www.freetetris.org/game.php" 
-                                    class="game-iframe" 
-                                    allowfullscreen
-                                    loading="lazy"
-                                    title="俄罗斯方块游戏 - 免费在线游戏"
-                                    aria-label="俄罗斯方块游戏界面"></iframe>
-                        </div>
-                    </div>
-                </article>
             </div>
         </section>
 
@@ -824,13 +742,15 @@
                                 <span class="tag tag-info">数字</span>
                                 <span class="tag tag-secondary">策略</span>
                             </div>
-                            <p class="game-description" itemprop="description">2048是一款令人上瘾的数字益智游戏。通过移动滑块，合并相同的数字，直到你达到传奇的2048方块！这不仅考验你的运气，更需要深思熟虑的策略。你能挑战成功吗？</p>
+                            <p class="game-description" itemprop="description">2048是一款全球流行、令人上瘾的数字益智游戏。通过合并相同的数字，挑战你的逻辑和策略，最终达到传奇的2048方块！你能成功吗？</p>
                             <ul class="game-features">
-                                <li>使用方向键或滑动屏幕来移动所有方块</li>
-                                <li>当两个相同数字的方块碰撞时，它们会合并</li>
-                                <li>目标是创造一个值为2048的方块</li>
-                                <li>简单易学，但精通很难</li>
-                                <li>训练你的逻辑思维能力</li>
+                                <li><strong>操作方法：</strong></li>
+                                <li>使用键盘的 "上、下、左、右" 方向键移动所有方块。</li>
+                                <li>在手机上，用手指在屏幕上滑动即可。</li>
+                                <li><strong>游戏规则：</strong></li>
+                                <li>当两个相同数字的方块碰撞时，它们会合并成一个数字翻倍的方块。</li>
+                                <li>每次移动后，棋盘上会随机出现一个新的2或4方块。</li>
+                                <li>当棋盘被占满且无法再移动时，游戏结束。</li>
                             </ul>
                             <meta itemprop="genre" content="Puzzle">
                             <meta itemprop="genre" content="Strategy">
@@ -838,41 +758,43 @@
                             <meta itemprop="applicationCategory" content="Game">
                         </div>
                         <div class="game-container">
-                            <iframe src="https://opendingux.github.io/2048-for-dingux/" 
+                            <iframe src="https://gabrielecirulli.github.io/2048/" 
                                     class="game-iframe" 
                                     allowfullscreen
                                     loading="lazy"
-                                    title="2048游戏 - 免费在线游戏"
-                                    aria-label="2048游戏界面"></iframe>
+                                    title="2048在线游戏"
+                                    aria-label="2048在线游戏界面"></iframe>
                         </div>
                     </div>
                 </article>
             </div>
         </section>
 
-        <section id="casual-games" class="section">
+        <section id="arcade-games" class="section">
             <div class="container">
-                <h2 class="section-title">休闲游戏</h2>
+                <h2 class="section-title">街机游戏</h2>
                 
                 <article class="game-card" itemscope itemtype="https://schema.org/VideoGame">
                     <div class="game-content">
                         <div class="game-info">
-                            <h3 class="game-title" itemprop="name">Flappy Bird (像素鸟)</h3>
+                            <h3 class="game-title" itemprop="name">Clumsy Bird (笨拙的小鸟)</h3>
                             <div class="game-tags">
-                                <span class="tag tag-info">休闲</span>
                                 <span class="tag tag-success">街机</span>
+                                <span class="tag tag-info">休闲</span>
                                 <span class="tag tag-danger">技巧</span>
                             </div>
-                            <p class="game-description" itemprop="description">体验这款风靡全球的经典游戏！点击屏幕让小鸟飞行，小心翼翼地穿过管道。操作简单，但挑战极高。每一次点击都需要精准的时机。快来和朋友比比看谁能飞得更远！</p>
+                            <p class="game-description" itemprop="description">还记得那只令人抓狂又欲罢不能的小鸟吗？这款游戏是经典的像素鸟的精彩复刻。操作极其简单，但想获得高分却极具挑战性。每一次点击都需要精准的时机。快来和朋友比比看谁能飞得更远！</p>
                             <ul class="game-features">
-                                <li>经典的一键式玩法</li>
-                                <li>点击屏幕或按空格/上箭头来控制小鸟</li>
-                                <li>成功穿过每一对管道即可得分</li>
-                                <li>考验你的反应速度和节奏感</li>
-                                <li>像素艺术风格，重温复古感觉</li>
+                                 <li><strong>操作方法：</strong></li>
+                                <li>在电脑上，按 "空格键" 或 "鼠标左键" 来让小鸟飞行。</li>
+                                <li>在手机上，轻触屏幕任意位置即可。</li>
+                                <li><strong>游戏提示：</strong></li>
+                                <li>保持平稳的节奏是获得高分的关键。</li>
+                                <li>不要过早或过晚点击，否则很容易失败。</li>
+                                <li>这是一款考验耐心和反应的游戏，祝你好运！</li>
                             </ul>
-                            <meta itemprop="genre" content="Casual">
                             <meta itemprop="genre" content="Arcade">
+                            <meta itemprop="genre" content="Casual">
                             <meta itemprop="genre" content="Skill">
                             <meta itemprop="playMode" content="SinglePlayer">
                             <meta itemprop="applicationCategory" content="Game">
@@ -882,8 +804,8 @@
                                     class="game-iframe" 
                                     allowfullscreen
                                     loading="lazy"
-                                    title="Flappy Bird (像素鸟)游戏 - 免费在线游戏"
-                                    aria-label="Flappy Bird (像素鸟)游戏界面"></iframe>
+                                    title="Clumsy Bird (笨拙的小鸟) 在线游戏"
+                                    aria-label="Clumsy Bird (笨拙的小鸟) 在线游戏界面"></iframe>
                         </div>
                     </div>
                 </article>
@@ -915,9 +837,9 @@
                     <p class="text-gray-600 mb-4">我们提供多种类型的游戏，满足不同玩家的需求</p>
                     <div class="categories-grid">
                         <div class="category-card">
-                            <div class="category-icon text-danger" aria-hidden="true">⚔️</div>
-                            <h4>动作游戏</h4>
-                            <p class="text-sm text-gray-600 mt-2">刺激的战斗和冒险体验</p>
+                            <div class="category-icon text-accent" aria-hidden="true">🧩</div>
+                            <h4>益智游戏</h4>
+                            <p class="text-sm text-gray-600 mt-2">锻炼思维的智力挑战</p>
                         </div>
                         <div class="category-card">
                             <div class="category-icon text-success" aria-hidden="true">🕹️</div>
@@ -925,9 +847,9 @@
                             <p class="text-sm text-gray-600 mt-2">经典怀旧的街机体验</p>
                         </div>
                         <div class="category-card">
-                            <div class="category-icon text-accent" aria-hidden="true">🧩</div>
-                            <h4>益智游戏</h4>
-                            <p class="text-sm text-gray-600 mt-2">锻炼思维的智力挑战</p>
+                            <div class="category-icon text-danger" aria-hidden="true">⚔️</div>
+                            <h4>动作游戏</h4>
+                            <p class="text-sm text-gray-600 mt-2">刺激的战斗和冒险体验</p>
                         </div>
                         <div class="category-card">
                             <div class="category-icon text-secondary" aria-hidden="true">🏎️</div>
@@ -950,10 +872,8 @@
                 <div>
                     <h3>游戏分类</h3>
                     <ul>
-                        <li><a href="#action-games" aria-label="浏览动作游戏">动作游戏</a></li>
-                        <li><a href="#arcade-games" aria-label="浏览街机游戏">街机游戏</a></li>
                         <li><a href="#puzzle-games" aria-label="浏览益智游戏">益智游戏</a></li>
-                        <li><a href="#casual-games" aria-label="浏览休闲游戏">休闲游戏</a></li>
+                        <li><a href="#arcade-games" aria-label="浏览街机游戏">街机游戏</a></li>
                     </ul>
                 </div>
                 <div>
@@ -1076,7 +996,7 @@
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "TiHow Gaming",
-        "description": "免费在线游戏平台，提供谷歌小恐龙、2048、Flappy Bird、俄罗斯方块等多种类型的HTML5游戏",
+        "description": "免费在线游戏平台，提供2048、Clumsy Bird等多种类型的HTML5游戏",
         "url": "https://tihow.online/",
         "potentialAction": {
             "@type": "SearchAction",
@@ -1106,30 +1026,6 @@
             {
                 "@type": "VideoGame",
                 "position": 1,
-                "name": "谷歌小恐龙",
-                "description": "经典的谷歌浏览器离线游戏，控制恐龙奔跑跳跃，躲避障碍。",
-                "genre": ["Action", "Endless Runner", "Arcade"],
-                "playMode": "SinglePlayer",
-                "applicationCategory": "Game",
-                "url": "https://tihow.online/#action-games",
-                "operatingSystem": "Any",
-                "browserRequirements": "HTML5 Compatible Browser"
-            },
-            {
-                "@type": "VideoGame",
-                "position": 2,
-                "name": "俄罗斯方块",
-                "description": "经典的俄罗斯方块游戏，旋转和移动方块填满水平线",
-                "genre": ["Arcade", "Puzzle"],
-                "playMode": "SinglePlayer",
-                "applicationCategory": "Game",
-                "url": "https://tihow.online/#arcade-games",
-                "operatingSystem": "Any",
-                "browserRequirements": "HTML5 Compatible Browser"
-            },
-            {
-                "@type": "VideoGame",
-                "position": 3,
                 "name": "2048",
                 "description": "令人上瘾的数字益智游戏，合并相同数字的方块，挑战2048！",
                 "genre": ["Puzzle", "Strategy"],
@@ -1141,13 +1037,13 @@
             },
             {
                 "@type": "VideoGame",
-                "position": 4,
-                "name": "Flappy Bird (像素鸟)",
-                "description": "风靡全球的休闲游戏，点击屏幕控制小鸟穿过管道",
-                "genre": ["Casual", "Arcade", "Skill"],
+                "position": 2,
+                "name": "Clumsy Bird (笨拙的小鸟)",
+                "description": "风靡全球的休闲街机游戏，点击屏幕控制小鸟穿过管道。",
+                "genre": ["Arcade", "Casual", "Skill"],
                 "playMode": "SinglePlayer",
                 "applicationCategory": "Game",
-                "url": "https://tihow.online/#casual-games",
+                "url": "https://tihow.online/#arcade-games",
                 "operatingSystem": "Any",
                 "browserRequirements": "HTML5 Compatible Browser"
             }
@@ -1164,7 +1060,7 @@
         "description": "提供免费在线游戏的娱乐平台",
         "foundingDate": "2025",
         "areaServed": "Worldwide",
-        "knowsAbout": ["在线游戏", "HTML5游戏", "免费游戏", "浏览器游戏", "益智游戏", "休闲游戏"],
+        "knowsAbout": ["在线游戏", "HTML5游戏", "免费游戏", "浏览器游戏", "益智游戏", "休闲游戏", "街机游戏"],
         "sameAs": []
     }
     </script>

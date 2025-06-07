@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TiHow Gaming - 免费在线游戏平台 | 谷歌小恐龙 | 2048 | HTML5游戏</title>
     <meta name="description" content="TiHow Gaming提供最好玩的免费在线游戏，包括经典的谷歌小恐龙、2048、Flappy Bird和俄罗斯方块。无需下载，支持手机和电脑，立即开始游戏！">
-    <meta name="keywords" content="在线游戏,免费游戏,谷歌小恐龙,2048,Flappy Bird,俄罗斯方块,HTML5游戏,浏览器游戏,手机游戏,益智游戏,休闲游戏">
+    <meta name="keywords" content="在线游戏,免费游戏,谷歌小恐龙,2048,Flappy Bird,俄罗斯方块,HTML5游戏,浏览器游戏,手机游戏,益智游戏,休闲游戏,搜索游戏">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://tihow.online/">
     
@@ -212,17 +212,51 @@
 
         .hero-subtitle {
             font-size: 1.25rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* NEW: Search Bar Styles */
+        .hero-search {
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
         }
 
-        .hero-description {
-            font-size: 1.125rem;
-            margin-bottom: 2rem;
-            max-width: 42rem;
-            margin-left: auto;
-            margin-right: auto;
+        .hero-search form {
+            display: flex;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
+        .hero-search input[type="search"] {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            border: none;
+            outline: none;
+            color: #333;
+        }
+
+        .hero-search button {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            background-color: #f59e0b;
+            color: #1f2937;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero-search button:hover {
+            background-color: #eab308;
+        }
+
+        #no-results {
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+        
         .hero-buttons {
             display: flex;
             flex-direction: column;
@@ -682,9 +716,17 @@
             <div class="container">
                 <h2 class="hero-title">欢迎来到TiHow Gaming</h2>
                 <p class="hero-subtitle">探索最精彩的免费在线游戏世界</p>
-                <p class="hero-description">从经典的益智游戏到刺激的动作冒险，我们为您提供最佳的游戏体验。无需下载，支持手机和电脑，立即开始游戏！</p>
+                
+                <div class="hero-search">
+                    <form id="search-form" role="search" aria-label="游戏搜索">
+                        <input type="search" id="search-input" placeholder="搜索游戏，例如：2048、小恐龙..." aria-label="搜索框">
+                        <button type="submit" aria-label="搜索按钮">搜索</button>
+                    </form>
+                </div>
+                <div id="no-results" class="hidden">未找到相关游戏。</div>
+                
                 <div class="hero-buttons">
-                    <a href="#puzzle-games" class="btn btn-primary" aria-label="立即开始游戏">开始游戏</a>
+                    <a href="#action-games" class="btn btn-primary" aria-label="立即开始游戏">浏览游戏</a>
                     <a href="#about" class="btn btn-outline" aria-label="了解更多关于我们">了解更多</a>
                 </div>
             </div>
@@ -974,6 +1016,59 @@
                 iframeObserver.observe(iframe);
             });
         }
+        
+        // NEW: Client-side Search Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchForm = document.getElementById('search-form');
+            const searchInput = document.getElementById('search-input');
+            const noResults = document.getElementById('no-results');
+            const gameCards = document.querySelectorAll('.game-card');
+            const gameSections = document.querySelectorAll('.section[id*="-games"]');
+
+            function filterGames() {
+                const query = searchInput.value.toLowerCase().trim();
+                let visibleGames = 0;
+
+                gameCards.forEach(card => {
+                    const title = card.querySelector('.game-title').textContent.toLowerCase();
+                    const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+                    
+                    if (title.includes(query) || tags.includes(query)) {
+                        card.style.display = 'block';
+                        visibleGames++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show/hide "No results" message
+                if (visibleGames === 0 && query !== '') {
+                    noResults.classList.remove('hidden');
+                } else {
+                    noResults.classList.add('hidden');
+                }
+
+                // Show/hide entire sections
+                gameSections.forEach(section => {
+                    const visibleCardsInSection = section.querySelectorAll('.game-card[style*="display: block"]').length;
+                    if (visibleCardsInSection > 0) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+            }
+
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                filterGames();
+            });
+
+            searchInput.addEventListener('input', function() {
+                // Instantly filter as user types
+                filterGames();
+            });
+        });
     </script>
 
     <script type="application/ld+json">

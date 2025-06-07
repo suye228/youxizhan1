@@ -417,6 +417,119 @@
             color: #6b7280;
             font-size: 1rem;
         }
+        
+        /* --- START: New Styles based on feedback --- */
+        .game-details {
+            padding: 1.5rem 2rem;
+            background-color: #fdfdff;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .game-details h4 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #dbeafe;
+        }
+
+        /* Game Preview Gallery */
+        .game-preview-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .preview-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Game Tips/Strategy */
+        .game-tips ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .game-tips li {
+            background-color: #f9fafb;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-left: 4px solid #10b981;
+            color: #4b5563;
+        }
+
+        /* "You Might Also Like" Section */
+        .related-games-section {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .related-games-section h3 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: #1f2937;
+        }
+
+        .related-games-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .related-game-card {
+            background: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .related-game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .related-game-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            background-color: #e5e7eb;
+        }
+
+        .related-game-card h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 1rem;
+            margin: 0;
+            background-color: #f9fafb;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        /* --- END: New Styles based on feedback --- */
+
 
         /* About Section */
         .about-grid {
@@ -598,6 +711,10 @@
             .footer-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+
+            .related-games-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
@@ -768,7 +885,50 @@
                                     aria-label="谷歌小恐龙在线游戏界面"></iframe>
                         </div>
                     </div>
+                    <div class="game-details">
+                        <div class="game-previews">
+                            <h4>游戏预览</h4>
+                            <div class="game-preview-gallery">
+                                <img src="https://via.placeholder.com/150x100.png?text=跳跃" alt="谷歌小恐龙截图1：跳跃" class="preview-image">
+                                <img src="https://via.placeholder.com/150x100.png?text=躲避翼龙" alt="谷歌小恐龙截图2：躲避翼龙" class="preview-image">
+                                <img src="https://via.placeholder.com/150x100.png?text=夜间模式" alt="谷歌小恐龙截图3：夜间模式" class="preview-image">
+                            </div>
+                        </div>
+
+                        <div class="game-tips">
+                            <h4>攻略与技巧</h4>
+                            <ul>
+                                <li><b>起跳时机：</b> 在仙人掌离你大约一个恐龙身位时起跳是最佳时机。</li>
+                                <li><b>小跳与大跳：</b> 轻按跳跃键是小跳，适合跳过单个或较矮的仙人掌；长按是大跳，适合连续或较高的障碍。</li>
+                                <li><b>应对翼龙：</b> 遇到低飞的翼龙直接跑过去即可，遇到高飞的翼龙则需要按“下”键下蹲躲避。</li>
+                                <li><b>保持节奏：</b> 游戏速度会越来越快，保持稳定的点击节奏比慌乱操作更重要。</li>
+                            </ul>
+                        </div>
+                    </div>
                 </article>
+
+                <div class="related-games-section">
+                    <h3>你可能也喜欢</h3>
+                    <div class="related-games-grid">
+                        <a href="#arcade-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=Tetris" alt="俄罗斯方块游戏预览">
+                            <h5>俄罗斯方块</h5>
+                        </a>
+                        <a href="#puzzle-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=2048" alt="2048游戏预览">
+                            <h5>2048</h5>
+                        </a>
+                        <a href="#casual-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=Flappy+Bird" alt="Flappy Bird游戏预览">
+                            <h5>Flappy Bird</h5>
+                        </a>
+                        <a href="#action-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=敬请期待" alt="更多游戏">
+                            <h5>更多动作游戏</h5>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -807,7 +967,49 @@
                                     aria-label="俄罗斯方块游戏界面"></iframe>
                         </div>
                     </div>
+                     <div class="game-details">
+                        <div class="game-previews">
+                            <h4>游戏预览</h4>
+                            <div class="game-preview-gallery">
+                                <img src="https://via.placeholder.com/150x100.png?text=方块下落" alt="俄罗斯方块截图1：方块下落" class="preview-image">
+                                <img src="https://via.placeholder.com/150x100.png?text=消除四行" alt="俄罗斯方块截图2：消除四行" class="preview-image">
+                                <img src="https://via.placeholder.com/150x100.png?text=T-Spin" alt="俄罗斯方块截图3：T-Spin技巧" class="preview-image">
+                            </div>
+                        </div>
+                        <div class="game-tips">
+                            <h4>攻略与技巧</h4>
+                            <ul>
+                                <li><b>着眼未来：</b> 时刻关注“下一个”方块提示区，提前规划布局。</li>
+                                <li><b>搭建平台：</b> 尽量保持方块堆叠平整，避免出现过多空洞。</li>
+                                <li><b>为长条预留：</b> 始终保持一边有一条垂直的空隙，以便使用长条方块一次消除四行（Tetris）。</li>
+                                <li><b>熟悉旋转：</b> 掌握各种方块（特别是S, Z, T型）的旋转方式，可以帮你解决很多棘手情况。</li>
+                            </ul>
+                        </div>
+                    </div>
                 </article>
+
+                 <div class="related-games-section">
+                    <h3>你可能也喜欢</h3>
+                    <div class="related-games-grid">
+                        <a href="#puzzle-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=2048" alt="2048游戏预览">
+                            <h5>2048</h5>
+                        </a>
+                         <a href="#action-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=Dino" alt="谷歌小恐龙游戏预览">
+                            <h5>谷歌小恐龙</h5>
+                        </a>
+                        <a href="#casual-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=Flappy+Bird" alt="Flappy Bird游戏预览">
+                            <h5>Flappy Bird</h5>
+                        </a>
+                        <a href="#arcade-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=敬请期待" alt="更多游戏">
+                            <h5>更多街机游戏</h5>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -846,7 +1048,49 @@
                                     aria-label="2048游戏界面"></iframe>
                         </div>
                     </div>
+                     <div class="game-details">
+                        <div class="game-previews">
+                            <h4>游戏预览</h4>
+                            <div class="game-preview-gallery">
+                                <img src="https://via.placeholder.com/150x100.png?text=初始布局" alt="2048游戏截图1：初始布局" class="preview-image">
+                                <img src="https://via.placeholder.com/150x100.png?text=合成512" alt="2048游戏截图2：合成512" class="preview-image">
+                                <img src="https://via.placeholder.com/150x100.png?text=接近2048" alt="2048游戏截图3：接近2048" class="preview-image">
+                            </div>
+                        </div>
+                        <div class="game-tips">
+                            <h4>攻略与技巧</h4>
+                            <ul>
+                                <li><b>角落策略：</b> 将数值最大的方块固定在四个角落中的一个，例如左下角。</li>
+                                <li><b>主次方向：</b> 尽量只使用三个方向键（如上、下、右），避免使用会让最大方块移动的方向（如左）。</li>
+                                <li><b>蛇形排列：</b> 让数字从大到小呈蛇形排列，这样更容易合并。</li>
+                                <li><b>谨慎操作：</b> 思考每一步可能带来的后果，不要随意移动，尤其是在棋盘接近满的时候。</li>
+                            </ul>
+                        </div>
+                    </div>
                 </article>
+
+                 <div class="related-games-section">
+                    <h3>你可能也喜欢</h3>
+                    <div class="related-games-grid">
+                        <a href="#arcade-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=Tetris" alt="俄罗斯方块游戏预览">
+                            <h5>俄罗斯方块</h5>
+                        </a>
+                        <a href="#casual-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=Flappy+Bird" alt="Flappy Bird游戏预览">
+                            <h5>Flappy Bird</h5>
+                        </a>
+                        <a href="#action-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=Dino" alt="谷歌小恐龙游戏预览">
+                            <h5>谷歌小恐龙</h5>
+                        </a>
+                        <a href="#puzzle-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=敬请期待" alt="更多游戏">
+                            <h5>更多益智游戏</h5>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -886,7 +1130,49 @@
                                     aria-label="Flappy Bird (像素鸟)游戏界面"></iframe>
                         </div>
                     </div>
+                     <div class="game-details">
+                        <div class="game-previews">
+                            <h4>游戏预览</h4>
+                            <div class="game-preview-gallery">
+                                <img src="https://via.placeholder.com/150x100.png?text=开始飞行" alt="Flappy Bird截图1：开始飞行" class="preview-image">
+                                <img src="https://via.placeholder.com/150x100.png?text=穿过管道" alt="Flappy Bird截图2：穿过管道" class="preview-image">
+                                <img src="https://via.placeholder.com/150x100.png?text=游戏结束" alt="Flappy Bird截图3：游戏结束" class="preview-image">
+                            </div>
+                        </div>
+                        <div class="game-tips">
+                            <h4>攻略与技巧</h4>
+                            <ul>
+                                <li><b>轻柔点击：</b> 不要猛烈或过快地点击，尝试轻柔、有节奏的短按。</li>
+                                <li><b>找到节奏：</b> 游戏的核心是节奏。找到能让小鸟保持平稳高度的点击频率。</li>
+                                <li><b>预判位置：</b> 视线焦点应放在即将到来的管道上，而不是小鸟本身。</li>
+                                <li><b>保持冷静：</b> 紧张和急躁是最大的敌人。放轻松，即使失败了也可以马上重来。</li>
+                            </ul>
+                        </div>
+                    </div>
                 </article>
+
+                 <div class="related-games-section">
+                    <h3>你可能也喜欢</h3>
+                    <div class="related-games-grid">
+                        <a href="#action-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=Dino" alt="谷歌小恐龙游戏预览">
+                            <h5>谷歌小恐龙</h5>
+                        </a>
+                        <a href="#arcade-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=Tetris" alt="俄罗斯方块游戏预览">
+                            <h5>俄罗斯方块</h5>
+                        </a>
+                        <a href="#puzzle-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=2048" alt="2048游戏预览">
+                            <h5>2048</h5>
+                        </a>
+                        <a href="#casual-games" class="related-game-card">
+                            <img src="https://via.placeholder.com/300x200.png?text=敬请期待" alt="更多游戏">
+                            <h5>更多休闲游戏</h5>
+                        </a>
+                    </div>
+                </div>
+                
             </div>
         </section>
 
@@ -1023,21 +1309,40 @@
             const searchInput = document.getElementById('search-input');
             const noResults = document.getElementById('no-results');
             const gameCards = document.querySelectorAll('.game-card');
-            const gameSections = document.querySelectorAll('.section[id*="-games"]');
+            const gameSections = document.querySelectorAll('section[id$="-games"]');
+            const relatedSections = document.querySelectorAll('.related-games-section');
 
             function filterGames() {
                 const query = searchInput.value.toLowerCase().trim();
                 let visibleGames = 0;
 
-                gameCards.forEach(card => {
-                    const title = card.querySelector('.game-title').textContent.toLowerCase();
-                    const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+                gameSections.forEach(section => {
+                    const cardsInSection = section.querySelectorAll('.game-card');
+                    let visibleCardsInSection = 0;
                     
-                    if (title.includes(query) || tags.includes(query)) {
-                        card.style.display = 'block';
-                        visibleGames++;
+                    cardsInSection.forEach(card => {
+                        const title = card.querySelector('.game-title').textContent.toLowerCase();
+                        const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+                        
+                        if (title.includes(query) || tags.includes(query) || query === '') {
+                            card.style.display = 'block';
+                            visibleCardsInSection++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    // Show/hide entire sections based on visible cards
+                    if (visibleCardsInSection > 0) {
+                        section.classList.remove('hidden');
+                        visibleGames += visibleCardsInSection;
+                         // Also show the related games section if the main section is visible
+                        const related = section.querySelector('.related-games-section');
+                        if (related) related.classList.remove('hidden');
                     } else {
-                        card.style.display = 'none';
+                        section.classList.add('hidden');
+                         const related = section.querySelector('.related-games-section');
+                        if (related) related.classList.add('hidden');
                     }
                 });
 
@@ -1047,16 +1352,6 @@
                 } else {
                     noResults.classList.add('hidden');
                 }
-
-                // Show/hide entire sections
-                gameSections.forEach(section => {
-                    const visibleCardsInSection = section.querySelectorAll('.game-card[style*="display: block"]').length;
-                    if (visibleCardsInSection > 0) {
-                        section.classList.remove('hidden');
-                    } else {
-                        section.classList.add('hidden');
-                    }
-                });
             }
 
             searchForm.addEventListener('submit', function(e) {
